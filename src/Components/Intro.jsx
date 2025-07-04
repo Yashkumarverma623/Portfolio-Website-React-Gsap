@@ -43,15 +43,15 @@ function Intro() {
     <div className="relative" ref={comp}>
       <div
         id="intro-slider"
-        className=" text-left  h-screen p-10 bg-gray-50 absolute top-0 font-spaceGrotesk z-10 w-full flex flex-col gap-10 tracking-tight"
-      >
-        <h1 className="text-9xl" id="title-1">
+        className="text-left sora h-screen p-10 bg-gray-50 absolute top-0 z-10 w-full flex flex-col gap-10 tracking-tight"
+        >
+        <h1 className="text-9xl  " id="title-1">
           Software Engineer
         </h1>
-        <h1 className="text-9xl" id="title-2">
+        <h1 className="text-9xl " id="title-2">
           Full Stack Developer
         </h1>
-        <h1 className="text-9xl" id="title-3">
+        <h1 className="text-9xl " id="title-3">
           Freelancer
         </h1>
       </div>
