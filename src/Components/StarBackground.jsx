@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+
 export const StarBackground = () => {
   const [stars, setStars] = useState([]);
   const [meteors, setMeteors] = useState([]);
@@ -39,7 +40,7 @@ export const StarBackground = () => {
   };
 
   const generateMeteors = () => {
-    const numberOfMeteors = 15;
+    const numberOfMeteors = 18;
     const newMeteors = [];
 
     for (let i = 0; i < numberOfMeteors; i++) {
@@ -57,62 +58,7 @@ export const StarBackground = () => {
   };
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0 bg-black">
-      <style>
-        {`
-          .star {
-            position: absolute;
-            background: radial-gradient(circle, #ffffff 0%, #ffffff 50%, transparent 70%);
-            border-radius: 50%;
-            box-shadow: 0 0 6px #ffffff;
-          }
-          
-          .animate-pulse-subtle {
-            animation: pulse-subtle var(--animation-duration) ease-in-out infinite alternate;
-          }
-          
-          @keyframes pulse-subtle {
-            0% {
-              opacity: var(--start-opacity);
-              transform: scale(1);
-            }
-            100% {
-              opacity: calc(var(--start-opacity) * 0.3);
-              transform: scale(0.8);
-            }
-          }
-          
-          .meteor {
-            position: absolute;
-            background: linear-gradient(45deg, #ffffff 0%, #87ceeb 50%, transparent 100%);
-            border-radius: 50% 0 50% 0;
-            box-shadow: 0 0 10px #87ceeb, 0 0 20px #87ceeb, 0 0 30px #87ceeb;
-            transform: rotate(45deg);
-          }
-          
-          .animate-meteor {
-            animation: meteor var(--animation-duration) linear infinite;
-          }
-          
-          @keyframes meteor {
-            0% {
-              transform: translateX(-100px) translateY(-100px) rotate(45deg);
-              opacity: 0;
-            }
-            10% {
-              opacity: 1;
-            }
-            90% {
-              opacity: 1;
-            }
-            100% {
-              transform: translateX(calc(100vw + 100px)) translateY(calc(100vh + 100px)) rotate(45deg);
-              opacity: 0;
-            }
-          }
-        `}
-      </style>
-      
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {stars.map((star) => (
         <div
           key={star.id}
@@ -122,8 +68,8 @@ export const StarBackground = () => {
             height: star.size + "px",
             left: star.x + "%",
             top: star.y + "%",
-            "--start-opacity": star.opacity,
-            "--animation-duration": star.animationDuration + "s",
+            opacity: star.opacity,
+            animationDuration: star.animationDuration + "s",
           }}
         />
       ))}
@@ -137,13 +83,11 @@ export const StarBackground = () => {
             height: meteor.size * 2 + "px",
             left: meteor.x + "%",
             top: meteor.y + "%",
-            animationDelay: meteor.delay + "s",
-            "--animation-duration": meteor.animationDuration + "s",
+            animationDelay: meteor.delay,
+            animationDuration: meteor.animationDuration + "s",
           }}
         />
       ))}
     </div>
   );
 };
-
-export default StarBackground;
